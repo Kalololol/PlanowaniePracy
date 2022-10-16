@@ -26,6 +26,7 @@ namespace Infrastructure.Context
         DbSet<Ward> Wards { get; set; }
         DbSet<WorkAssumptions> WorkAssumptions { get; set; }
         DbSet<Indisposition> Indispositions { get; set; }
+        DbSet<Request> Requests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

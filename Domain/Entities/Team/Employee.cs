@@ -22,6 +22,7 @@ namespace Domain.Entities.Team
         public string Password { get; set; }        
         public bool ActiveAccount { get; set; }
         public Contract Contract { get; set; }
+        public int ContractId { get; set; }
         public Ward Ward { get; set; }
         public int WardId { get; set; }
         public ICollection<Indisposition> Indispositions { get; set; }

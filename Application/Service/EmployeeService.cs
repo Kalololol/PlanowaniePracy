@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Domain.Entities.Team;
-using Infrastructure.Repositories;
+using Data.Repository;
 
 namespace Application.Service
 {
     public class EmployeeService
     {
-       /* private readonly IRepository<Employee> _employees;
+        private readonly IRepository<Employee> _employees;
         private readonly IMapper _mapper;
 
         public EmployeeService(IRepository<Employee> employee, IMapper mapper)
@@ -15,6 +15,12 @@ namespace Application.Service
             _mapper = mapper;
         }
 
-        public IQueryable<Employee> */
+        public Employee Add (Employee employee)
+        {
+            _employees.Add(employee);
+
+            return employee;
+
+        }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class WardDto
     {
-        public string Name { get; set; }
-
+        public string WardName { get; set; }
+        public ICollection<EmployeeDto> Employees { get; set; }
     }
 }

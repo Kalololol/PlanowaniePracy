@@ -15,6 +15,7 @@ namespace Domain.Entities.Planner
         public string DateMonthBy { get; set; }
         public ICollection<PlanDay> PlanDays { get; set; }
         public Ward Ward { get; set; }
+        public int WardId { get; set; }
         public bool ActivePlanMonth { get; set; }
         public DateTime Created { get; set; }
         public string CreatedBy { get; set; }
