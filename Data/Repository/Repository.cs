@@ -23,6 +23,7 @@ namespace Data.Repository
         }
         public void Delete(TEntity entity)
         {
+            
             entities.Remove(entity);
             SaveChanges();
         }
@@ -33,6 +34,10 @@ namespace Data.Repository
         public IQueryable<TEntity> GetAll()
         {
             return entities;
+        }
+        public IQueryable<TEntity> GetAllEmployeeInWard(int wardId)
+        {
+            return entities.Where(e => e.Id == wardId);
         }
         public TEntity GetById(int id)
         {

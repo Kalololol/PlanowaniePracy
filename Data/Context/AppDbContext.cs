@@ -18,20 +18,21 @@ namespace Infrastructure.Context
         }
 
         //DbSet'y
-        DbSet<PlanDay> PlanDays { get; set; }
-        DbSet<PlanMonth> PlanMonths { get; set; }
+
         DbSet<Contract> Contracts { get; set; }
         DbSet<Employee> Employees { get; set; }
         DbSet<Manager> Managers { get; set; }
         DbSet<Ward> Wards { get; set; }
         DbSet<WorkAssumptions> WorkAssumptions { get; set; }
         DbSet<Indisposition> Indispositions { get; set; }
+        DbSet<PlanDay> PlanDays { get; set; }
+        DbSet<PlanMonth> PlanMonths { get; set; }
         DbSet<Request> Requests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Employee>(eb =>
+          /*  modelBuilder.Entity<Employee>(eb =>
            {
                eb.Property(x => x.Name).IsRequired().HasMaxLength(50);
                eb.Property(x => x.Surname).IsRequired().HasMaxLength(80);
@@ -78,7 +79,7 @@ namespace Infrastructure.Context
                 .HasForeignKey(x => x.WardId);
             });
            
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);*/
 
         }
     }

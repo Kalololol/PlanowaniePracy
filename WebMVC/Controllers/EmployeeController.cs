@@ -1,41 +1,47 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Application.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebMVC.Models.Employee;
 
 namespace WebMVC.Controllers
 {
     public class EmployeeController : Controller
     {
+        private readonly EmployeeService _employeeService;
+
+        public EmployeeController(EmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+
         // GET: EmployeeController
         public ActionResult Index()
         {
-            return View();
+            return View(_employeeService.GetAllEmployees());
         }
 
         // GET: EmployeeController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(_employeeService.GetEmployeeById(id));
         }
 
         // GET: EmployeeController/Create
         public ActionResult Create()
         {
-            return View();
+
+            return View(new EmployeeModel());
         }
 
         // POST: EmployeeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(EmployeeModel employee)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
+            return RedirectToAction(nameof(Index));
+            
+
         }
 
         // GET: EmployeeController/Edit/5

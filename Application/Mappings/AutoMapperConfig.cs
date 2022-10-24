@@ -1,4 +1,6 @@
 ﻿using Application.Dto;
+using Application.Services.Employees.Commands.CreateEmployee;
+using Application.Services.Employees.Queries;
 using AutoMapper;
 using Domain.Entities.Planner;
 using Domain.Entities.Team;
@@ -12,15 +14,17 @@ namespace Application.Mappings
        public static IMapper Initialize()
             => new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Contract, ContractDto>();
-                cfg.CreateMap<Employee, EmployeeDto>();
-                cfg.CreateMap<Indisposition, IndispositionDto>();
-                cfg.CreateMap<Manager, ManagerDto>();
-                cfg.CreateMap<PlanDay, PlanDayDto>();
-                cfg.CreateMap<PlanMonth, PlanMonthDto>();
-                cfg.CreateMap<Request, RequestDto>();
-                cfg.CreateMap<Ward, WardDto>();
-                cfg.CreateMap<WorkAssumptions, WorkAssumptionsDto>();
+                cfg.CreateMap<Contract, Contract>();
+                cfg.CreateMap<EmployeeModel, Employee>().ReverseMap();  // reverseMap - mapowanie w odwrotną stronę
+                cfg.CreateMap<Employee, CreateEmployeeCommand>().ReverseMap(); // +
+
+                cfg.CreateMap<IndispositionDto, Indisposition>();
+                cfg.CreateMap<ManagerDto, Manager>();
+                cfg.CreateMap<PlanDayDto, PlanDay>();
+                cfg.CreateMap<PlanMonthDto, PlanMonth>();
+                cfg.CreateMap<RequestDto, Request>();
+                cfg.CreateMap<WardDto, Ward>();
+                cfg.CreateMap<WorkAssumptionsDto, WorkAssumptions>();
             }).CreateMapper();
     }
 }

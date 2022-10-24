@@ -14,6 +14,7 @@ namespace Data.Repository
         void Update(TEntity entity);
         TEntity GetById(int id);
         IQueryable<TEntity> GetAll();
+        public IQueryable<TEntity> GetAllEmployeeInWard(int wardId);
         IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         void Delete(TEntity entity);
         void SaveChanges();
