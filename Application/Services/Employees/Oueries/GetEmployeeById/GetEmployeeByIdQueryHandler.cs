@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Services.Employees.Queries
 {
-    public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, EmployeeModel>
+    public class GetEmployeeByIdQueryHandler : IRequestHandler<GetEmployeeByIdQuery, EmployeeDetailModel>
     {
         private readonly IRepository<Employee> _employeeRepository;
         private readonly IMapper _mapper;
@@ -15,22 +15,13 @@ namespace Application.Services.Employees.Queries
             _mapper = mapper;
         }
 
-        public Task<EmployeeModel> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
+        public Task<EmployeeDetailModel> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
         {
             var employee = _employeeRepository.GetById(request.Id);
 
-            return Task.FromResult(_mapper.Map<EmployeeModel>(employee));
-
-
+            return Task.FromResult(_mapper.Map<EmployeeDetailModel>(employee));
         }
 
 
     }
 }
-/*
-    public Task<Employee> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
-    {
-
-        return Task.FromResult(_employeeRepository.GetById(request.Id));
-    }
-*/

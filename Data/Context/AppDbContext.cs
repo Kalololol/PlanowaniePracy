@@ -3,11 +3,7 @@ using Domain.Entities.Team;
 using Domain.Entities.Team.WardPreferences;
 using Domain.Work;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Infrastructure.Context
 {
@@ -31,6 +27,7 @@ namespace Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
 
           /*  modelBuilder.Entity<Employee>(eb =>
            {

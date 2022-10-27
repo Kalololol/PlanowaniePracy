@@ -1,35 +1,40 @@
-﻿using Application.Services;
+﻿using Application.Services.Employees.Commands.CreateEmployee;
+using Application.Services.Employees.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebMVC.Models.Employee;
 
 namespace WebMVC.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly EmployeeService _employeeService;
+        private readonly  IMediator _mediator;
 
-        public EmployeeController(EmployeeService employeeService)
+        public EmployeeController(IMediator mediator)
         {
-            _employeeService = employeeService;
+            _mediator = mediator;
         }
 
+
         // GET: EmployeeController
-        public ActionResult Index()
+        public ActionResult GetAll(int wardId)
         {
-            return View(_employeeService.GetAllEmployees());
+
+            var result =  _mediator.Send(new GetEmployeesListQuery(wardId));
+
+            return View(result);
         }
 
         // GET: EmployeeController/Details/5
         public ActionResult Details(int id)
         {
-            return View(_employeeService.GetEmployeeById(id));
+            var result = _mediator.Send(new GetEmployeeByIdQuery(id));
+            return View(result); 
         }
 
         // GET: EmployeeController/Create
         public ActionResult Create()
-        {
-
+        {            
             return View(new EmployeeModel());
         }
 
@@ -38,7 +43,7 @@ namespace WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeModel employee)
         {
-            
+            var result = _mediator.Send(new CreateEmployeeCommand());
             return RedirectToAction(nameof(Index));
             
 
@@ -53,7 +58,7 @@ namespace WebMVC.Controllers
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(EmployeeModel employee)
         {
             try
             {

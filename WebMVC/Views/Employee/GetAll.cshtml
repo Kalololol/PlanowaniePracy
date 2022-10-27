@@ -1,10 +1,10 @@
-﻿@model IEnumerable<WebMVC.Models.Employee.EmployeeModel>
+﻿@model IEnumerable<WebMVC.Models.Employee.EmployeeModelMVC>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetAll";
 }
 
-<h1>Index</h1>
+<h1>GetAll</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -32,6 +32,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ActiveAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContracId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.WardId)
@@ -62,6 +65,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ActiveAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContracId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WardId)

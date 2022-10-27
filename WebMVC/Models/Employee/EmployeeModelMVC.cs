@@ -1,7 +1,7 @@
 ﻿namespace WebMVC.Models.Employee
 
 {
-    public class EmployeeModel
+    public class EmployeeModelMVC
     {
         public string Name { get; set; }
         public string Surname { get; set; }

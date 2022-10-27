@@ -2,9 +2,6 @@
 
 namespace Application.Services.Employees.Queries
 {
-    public class GetEmployeeByIdQuery : IRequest<EmployeeDetailModel>
-    {
-        public int Id { get; set; }
+    public record GetEmployeeByIdQuery(int Id) : IRequest<EmployeeDetailModel>;
 
-    }
 }

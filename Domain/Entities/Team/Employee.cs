@@ -15,14 +15,11 @@ namespace Domain.Entities.Team
         public string Name { get; set; }
         public string Surname { get; set; }
         public string AddressEmail { get; set; }
-        [Phone]
-        [MinLength(9)]
         public string PhoneNumber { get; set; }
         public string LicenseNumber { get; set; }
         public string Password { get; set; }        
         public bool ActiveAccount { get; set; }
         public Contract Contract { get; set; }
-        public int ContractId { get; set; }
         public Ward Ward { get; set; }
         public int WardId { get; set; }
         public ICollection<Indisposition> Indispositions { get; set; }
@@ -40,7 +37,9 @@ namespace Domain.Entities.Team
             string phoneNumber, 
             string licenseNumber, 
             string password, 
-            bool activeAccount, 
+            bool activeAccount,
+            int contractId,
+            int wardId,
             DateTime created, 
             string createdBy, 
             DateTime? lastModified, 
@@ -53,6 +52,7 @@ namespace Domain.Entities.Team
             LicenseNumber = licenseNumber;
             Password = password;
             ActiveAccount = activeAccount;
+            WardId = wardId;
             Created = created;
             CreatedBy = createdBy;
             LastModified = lastModified;
